@@ -8,7 +8,7 @@ server:
     key-store-password: ${IEXEC_SMS_SSL_KEYSTORE_PASSWORD:whatever}
     key-store-type: ${IEXEC_SMS_SSL_KEYSTORE_TYPE:PKCS12}
     key-alias: ${IEXEC_SMS_SSL_KEYSTORE_ALIAS:iexec-core}
-    client-auth: need
+    #client-auth: need
 
 # Not sure it's a good idea but here is a link for an embedded mongodb
 # https://www.baeldung.com/spring-boot-embedded-mongodb
@@ -54,3 +54,8 @@ scone:
     host: ${IEXEC_SCONE_CAS_HOST:localhost}
     port: ${IEXEC_SCONE_CAS_PORT:8081}
     palaemon: ${IEXEC_PALAEMON_TEMPLATE:./src/main/resources/palaemonTemplate.vm}
+
+logging:
+  level:
+    org.springframework: DEBUG
+    org.apache.http: DEBUG

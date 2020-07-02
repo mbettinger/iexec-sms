@@ -74,13 +74,18 @@ public class TeeController {
         workerAddress = Keys.toChecksumAddress(workerAddress);
         String attestingEnclave = workerpoolAuthorization.getEnclaveChallenge();
 
-        try {
-            String sessionId = teeSessionService.generateTeeSession(taskId, workerAddress, attestingEnclave);
-            return !sessionId.isEmpty() ? ResponseEntity.ok(sessionId) : ResponseEntity.notFound().build();
+       // try {
+        String sessionId = teeSessionService.generateTeeSession(taskId, workerAddress, attestingEnclave);
+        log.info("Generate secure session for worker [taskId:{}, workerAddress:{}, attestingEnclave:{}, sessionId:{}]",
+                taskId, workerAddress, attestingEnclave, sessionId);
+        return !sessionId.isEmpty() ? ResponseEntity.ok(sessionId) : ResponseEntity.notFound().build();
+            /*
         } catch (FeignException e) {
             log.error("Failed to generate secure session for worker [taskId:{}, workerAddress:{}, exception:{}]",
                     taskId, workerAddress, e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+
+             */
     }
 }

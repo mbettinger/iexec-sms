@@ -14,5 +14,5 @@ public interface TeeSessionClient {
             headers = {
                 "Expect=100-continue",
                 "Content-Type=application/x-www-form-urlencoded"})
-    public ResponseEntity<String> generateSecureSession(@RequestBody byte[] palaemonFile) throws FeignException;
+    public ResponseEntity<String> generateSecureSession(@RequestBody byte[] palaemonFile);
 }
